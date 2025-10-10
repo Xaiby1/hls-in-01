@@ -147,18 +147,25 @@ function decodeJuicyCodesPayloadFromHtml(html: string): string | null {
 export async function extractFlash(id: string): Promise<Source> {
   const landingDomain = 'https://dailyeduhub.com/';
   const landingUrl = `${landingDomain}articles.php?id=${encodeURIComponent(id)}`;
-
-  const userAgent = 'Mozilla/5.0 (X11; Linux x86_64; rv:141.0) Gecko/20100101 Firefox/141.0';
+  console.log(landingUrl);
+  const userAgent = 'Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0';
 
   const landingHeaders: Record<string, string> = {
     'User-Agent': userAgent,
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'en-US,en;q=0.5',
-    'Referer': 'https://playdesi.info/',
+    'Referer': 'https://www.desi-serials.to/',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'cross-site',
+    'Priority': 'u=0, i',
   };
 
   const landingRes = await fetch(landingUrl, { headers: landingHeaders });
   const landingHtml = await landingRes.text();
+  console.log(landingHtml);
 
   const iframeUrl = extractIframeSrc(landingHtml, landingDomain);
   if (!iframeUrl) throw new Error('DESI-FLASH: iframe src not found');
