@@ -95,9 +95,15 @@ export async function extractDaily(id: string): Promise<Source> {
     'User-Agent': userAgent,
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'en-US,en;q=0.5',
-    'Referer': 'https://playdesi.info/',
+    'Referer': 'https://www.desi-serials.to/',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'cross-site',
+    'Priority': 'u=0, i',
   };
-
+  
   const landingRes = await fetch(landingUrl, { headers: landingHeaders });
   const landingHtml = await landingRes.text();
 
