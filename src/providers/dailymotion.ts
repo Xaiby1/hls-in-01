@@ -86,8 +86,8 @@ function base64UrlEncodeString(str: string): string {
 }
 
 export async function extractDaily(id: string): Promise<Source> {
-  const landingDomain = 'https://starscopsinsider.com/';
-  const landingUrl = `${landingDomain}post.php?id=${encodeURIComponent(id)}`;
+  const landingDomain = 'https://dailyeduhub.com/';
+  const landingUrl = `${landingDomain}articles.php?id=${encodeURIComponent(id)}`;
 
   const userAgent = 'Mozilla/5.0 (X11; Linux x86_64; rv:141.0) Gecko/20100101 Firefox/141.0';
 
